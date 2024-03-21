@@ -1,5 +1,4 @@
 import json
-import tempfile
 
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
@@ -32,7 +31,6 @@ df = (
 )
 
 df = df.select(
-    get_json_object(df.value, "$.DeviceId").alias("device_id"),
     get_json_object(df.value, "$.Timestamp").alias("timestamp"),
     explode(
         from_json(get_json_object(df.value, "$.Packages"), ArrayType(StringType()))
