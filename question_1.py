@@ -47,12 +47,12 @@ df = df.select(
     }
 )
 
-devices_by_package_time_window = q1.groupby(
+devices_by_package_time_window = df.groupby(
     "package_name",
     window("timestamp", "1 hour").alias("hour"),  # change for days and weeks windows accordingly
 ).agg(countDistinct("device_id").alias("devices_count"))
 
-devices_by_location = q1.groupby("country", "region", "city").agg(
+devices_by_location = df.groupby("country", "region", "city").agg(
     countDistinct("device_id").alias("devices_count")
 )
 
