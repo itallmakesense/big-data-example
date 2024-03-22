@@ -26,6 +26,11 @@
   - `(999 * 999 * 9 * 9) = 80 * 10^6` writes per day, `1000` writes per second
 
 ### Technologies
-- Kafka for events production and consumption:
+- Apache Kafka for events production and consumption. It's a good pick to solve the problem of processing a large number of continuously emerging events, as it is a distributed event streaming tool, known for a high-performance, scalability, high availability, and at the same time not skipping durability property of the events data. Key things to figure out:
   - `2 * 10^6` devices events per day can be sent into one topic, so lets create dedicated topics for each region (`4000`), e.g. `devices_region_ny`
-  - TBD
+  - as we have assumed `4000` concurrent counsumers, which are not blocking each other, we would need the same amount of topic partitions. It's resulting in `16 * 10^6` partitions across all `4000` topics
+  - having this big amount of partitions, we would need an adequate amount of processing power for them. Due to very little details, I'll assume that we would be ok with the amount of clusters equal to the number of countries (`200`), resulting in `80 * 10^3` partitions per cluster
+  - As for the number of brokers, it's generally recommended to have less that `4000` partitions per broker, which gives us minimum of `20` brokers per cluster. Twice of that (`40`) will be a safer choise
+- Apache Spark (PySpark) for events processing. It is scalable, funtional stream processing engine, that will allow to do all the required operations
+- As it wasn't specified in what format specifically the results expected to be stored, as well as who will be using them or in what way they should be visualized, I'd pick a simple object storage, that should be distributed, partitionable and can be integrated with PySpark. For example, AWS S3
+- As soon as data will be in object storage, it can be queried by many ways, starting from individually opening the result files, continuing with PySpark, and ending with tools like AWS Athena
