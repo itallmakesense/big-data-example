@@ -1,5 +1,10 @@
 # big-data-homework
 
+### Solution
+https://github.com/itallmakesense/big-data-homework/blob/main/SOLUTION.md
+
+### Description
+
 We are receiving data from external sources in the following structure:
 ```
 {
