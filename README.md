@@ -1,7 +1,7 @@
 # big-data-example
 
 ### Solution
-https://github.com/itallmakesense/big-data-homework/blob/main/SOLUTION.md
+https://github.com/itallmakesense/big-data-example/blob/main/SOLUTION.md
 
 ### Description
 
