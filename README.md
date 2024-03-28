@@ -53,7 +53,7 @@ We are receiving data from external sources in the following structure:
 These events are snapshots of packages installed on the device. Each active device sends this kind of events up to several times a day.
 Geo distributed frontend servers receive events in real time in JSON format.
 
-You need to design ETL process and data storage structure to be able to answer the following questions:
+How would ETL process and data storage structure will look like?
   - How many devices have installed specified packages by hours/days/weeks? Devices distribution
   by country/city/region. Please note that packages can be deleted from the device. When the
   package is deleted - it will not be present in the next snapshot.
@@ -61,10 +61,3 @@ You need to design ETL process and data storage structure to be able to answer t
   - How does the value distribution for a particular package setting change over time by package
   version?
   - Possibility to retrieve device list by value of a particular package setting at some point in time.
-
-Following items are expected from you:
-  - Select a technology for each key component of data processing system. Explain your choice.
-  - Provide a high-level overview of the data flow architecture.
-  - Show how the data is being loaded and transformed.
-  - Provide the data processing algorithm written in any programming language (if applicable).
-  - Describe the process of data visualization.
