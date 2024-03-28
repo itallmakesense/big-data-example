@@ -1,4 +1,4 @@
-# big-data-homework
+# big-data-example
 
 ### Solution
 https://github.com/itallmakesense/big-data-homework/blob/main/SOLUTION.md
